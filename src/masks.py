@@ -1,7 +1,7 @@
 from typing import List
+from typing import Union
 
-
-def get_mask_card_number(pin_code_numbers: List[str]) -> str:
+def get_mask_card_number(pin_code_numbers: list[str]) -> Union[str]:
     """
     маскировка номера банковской карты
     :return: замаскированный номер
@@ -15,10 +15,10 @@ def get_mask_card_number(pin_code_numbers: List[str]) -> str:
 
 
 print(get_mask_card_number(list
-                           ("7000792289606361")))  # Вывод: 7000 79** **** 6361
+                           ("7000792289606361"))) # Вывод: 7000 79** **** 6361
 
 
-def get_mask_account(account_number: str) -> str:
+def get_mask_account(account_number: Union[str]) -> Union[str]:
     """
     маскировки номера банковского счета
     :return: замаскированный счет
