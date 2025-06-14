@@ -1,5 +1,4 @@
-from masks import get_mask_card_number
-from masks import get_mask_account
+from masks import get_mask_card_number, get_mask_account
 from typing import Union
 
 def mask_account_card(unique_number: Union[str]) -> Union[str]:
@@ -7,27 +6,31 @@ def mask_account_card(unique_number: Union[str]) -> Union[str]:
     Маскирует номер банковской карты или счета.
     :return: Строка с маскированным номером и исходным префиксом.
     """
+    parts_unique_number = unique_number.split() # делим на слова
+    #if not parts_unique_number:
+    #    return unique_number
+    disguised_number = parts_unique_number[-1] # берём последнее слово т.е. номер
 
-    #account_or_card_number = unique_number.split()  # разделяем строку пробелами
-    number_card_for_masks = ""
-    number_account_for_mask = unique_number[5:] # переменная для получения номера счета по индексу
-    disguised_number = ""
-    disguised_account = ""
-    only_card_name = unique_number[:-16]
-    for word in unique_number: # перебираем строку по словам
-        for symbol in word:
-            if symbol.isdigit():   # проверяем является ли символ цифрой
-                number_card_for_masks += symbol # Собираем цифры в отдельную переменную
-                if len(number_card_for_masks) == 16: # проверяем по количеству карта это или счет
-                    disguised_number = get_mask_card_number(number_card_for_masks) # вызываем функцию из другого модуля в отдельную переменную
-                else:
-                    disguised_account = get_mask_account(number_account_for_mask)
-                    return f"'Счет' {disguised_account}"
-    return f"{only_card_name} {disguised_number}"
+    if disguised_number.isdigit():
+        if len(disguised_number) == 16:
+            number_for_masks = get_mask_card_number(list(disguised_number))
+            prefix = " ".join(parts_unique_number[:-1])
+            return f"{prefix} {number_for_masks}"
+        elif len(disguised_number) == 20:
+            number_for_masks = get_mask_account(disguised_number)
+            prefix = " ".join(parts_unique_number[:-1])
+            return f"{prefix} {number_for_masks}"
+    return unique_number
 
+#"2024-03-11T02:26:18.671407" возвращает "ДД.ММ.ГГГГ"("11.03.2024")
+def get_date(date_str: str) -> str:
+    """Функция извлекает дату в формате ДД.ММ.ГГГГ"""
+    return f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
 
 # Примеры использования
-print(mask_account_card("Maestro 7000792289606361"))  # Maestro 7000 79** **** 6361
-print(mask_account_card("Счет 73654108430135874305"))  # Счет **4305
-
-
+print(mask_account_card("Счет 73654108430135874305"))
+# Счет **4305
+print(mask_account_card("Visa Platinum 8990922113665229"))
+# Visa Platinum 8990 92** **** 5229
+print(get_date("2024-03-11T02:26:18.671407"))
+# 11.03.2024
