@@ -1,5 +1,5 @@
-from typing import List
 from typing import Union
+
 
 def get_mask_card_number(pin_code_numbers: list[str]) -> Union[str]:
     """
@@ -15,7 +15,7 @@ def get_mask_card_number(pin_code_numbers: list[str]) -> Union[str]:
 
 
 print(get_mask_card_number(list
-                           ("7000792289606361"))) # Вывод: 7000 79** **** 6361
+                           ("7000792289606361")))  # Вывод: 7000 79** **** 6361
 
 
 def get_mask_account(account_number: Union[str]) -> Union[str]:
