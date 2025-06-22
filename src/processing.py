@@ -5,6 +5,7 @@ data = [
     {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
 ]
 
+
 def filter_by_state(data: list[dict], state: str = 'EXECUTED') -> list[dict]:
     """Фильтрует список словарей по значению ключа 'state'."""
     return [item for item in data if item.get('state') == state]
@@ -20,8 +21,9 @@ def filter_by_state(data: list[dict], state: str = 'EXECUTED') -> list[dict]:
 # {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
 
 
-def sort_by_date(operations, reverse=True):
+def sort_by_date(operations: list[dict], reverse: bool = True) -> list[dict]:
     return sorted(operations, key=lambda x: x['date'], reverse=reverse)
+
 
 # Сортировка по убыванию (новые операции в начале)
 sorted_desc = sort_by_date(data)
