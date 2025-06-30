@@ -1,5 +1,3 @@
-from typing import Union
-
 import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
@@ -15,7 +13,7 @@ from src.masks import get_mask_account, get_mask_card_number
         ("1234", "1234"),  # Короткий номер
     ],
 )
-def test_get_mask_card_number(input_card:list[str], expected:Union[str]):
+def test_get_mask_card_number(input_card: str, expected: str) -> None:
     masked = get_mask_card_number(list(input_card))
     assert masked == expected
 
@@ -29,5 +27,5 @@ def test_get_mask_card_number(input_card:list[str], expected:Union[str]):
         ("", "**"),  # Пустая строка
     ],
 )
-def test_get_mask_account(input_account:Union[str], expected:Union[str]):
+def test_get_mask_account(input_account: str, expected: str) -> None:
     assert get_mask_account(input_account) == expected
