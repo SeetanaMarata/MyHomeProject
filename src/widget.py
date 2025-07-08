@@ -28,7 +28,7 @@ def get_date(date_str: str) -> str:
     return f"{date_str[8:10]}.{date_str[5:7]}.{date_str[:4]}"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 
     # примеры использования
     print(mask_account_card("Счет 73654108430135874305"))
