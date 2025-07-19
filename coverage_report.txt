@@ -1,0 +1,14 @@
+Name                       Stmts   Miss  Cover
+----------------------------------------------
+src\__init__.py                0      0   100%
+src\generators.py             13      6    54%
+src\masks.py                  18      4    78%
+src\processing.py              9      3    67%
+src\widget.py                 21      3    86%
+tests\__init__.py              0      0   100%
+tests\test_generators.py      22      7    68%
+tests\test_masks.py            9      0   100%
+tests\test_processing.py      20      6    70%
+tests\test_widget.py          19      6    68%
+----------------------------------------------
+TOTAL                        131     35    73%

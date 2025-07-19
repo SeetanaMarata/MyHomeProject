@@ -1,6 +1,7 @@
+from typing import List, Tuple
+
 import pytest
 
-from typing import List, Tuple
 from src.widget import get_date, mask_account_card
 
 
@@ -40,5 +41,5 @@ def test_get_date(date_samples: List[Tuple[str, str]]) -> None:
         assert result == expected
 
 
-def test_get_date_invalid():
+def test_get_date_invalid() -> None:
     assert get_date("2024-13-32T25:70:99") == "32.13.2024"  # Обработка некорректной даты
