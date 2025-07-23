@@ -1,6 +1,6 @@
 import json
 import os
-from typing import List, Dict, Any
+from typing import Any, Dict, List
 
 
 def load_transactions(file_path: str) -> List[Dict[str, Any]]:
@@ -13,11 +13,11 @@ def load_transactions(file_path: str) -> List[Dict[str, Any]]:
     Возвращает:
     List[Dict[str, Any]]: Список транзакций или пустой список при ошибке
     """
-    if not os.path.exists(file_path):
-        return []
-
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        if not os.path.exists(file_path):
+            return []
+
+        with open(file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
             return data if isinstance(data, list) else []
     except (json.JSONDecodeError, OSError):

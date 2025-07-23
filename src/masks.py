@@ -18,7 +18,7 @@ def get_mask_card_number(pin_code_numbers: list[str]) -> Union[str]:
     # Собираем строку из списка
     code_after_masks = "".join(pin_code_numbers)
     # Разбиваем на группы по 4 символа
-    code_for_user = [code_after_masks[i : i + 4] for i in range(0, len(code_after_masks), 4)]
+    code_for_user = [code_after_masks[i: i + 4] for i in range(0, len(code_after_masks), 4)]
     return " ".join(code_for_user)
 
 
