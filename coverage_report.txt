@@ -1,5 +1,1 @@
-Name            Stmts   Miss  Cover
------------------------------------
-decorators.py      26      0   100%
------------------------------------
-TOTAL              26      0   100%
+No source for code: 'C:\Users\a467\PycharmProjects\PythonProject\file_operations.py'.
