@@ -1,4 +1,5 @@
 import unittest
+from typing import Any
 from unittest.mock import patch
 
 import pandas as pd
@@ -8,7 +9,8 @@ from file_reader import read_csv_transactions, read_excel_transactions
 
 class TestFileReader(unittest.TestCase):
     @patch("pandas.read_csv")
-    def test_read_csv_transactions(self, mock_read_csv):
+    def test_read_csv_transactions(self, mock_read_csv: Any) -> None:
+        """тестирование чтения CSV транзакций"""
         # Setup mock
         mock_data = pd.DataFrame(
             [
@@ -24,10 +26,10 @@ class TestFileReader(unittest.TestCase):
         # Assertions
         self.assertEqual(len(result), 2)
         self.assertEqual(result[0]["amount"], 100)
-        mock_read_csv.assert_called_once_with("dummy.csv")
+        mock_read_csv.assert_called_once_with("dummy.csv", delimiter=";")
 
     @patch("pandas.read_excel")
-    def test_read_excel_transactions(self, mock_read_excel):
+    def test_read_excel_transactions(self, mock_read_excel: Any) -> None:
         # Setup mock
         mock_data = pd.DataFrame(
             [
