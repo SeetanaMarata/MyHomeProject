@@ -13,7 +13,7 @@ def read_csv_transactions(file_path: str) -> List[Dict[str, Any]]:
     Returns:
         List of dictionaries with transaction data.
     """
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(file_path, delimiter=";")
     return [{str(k): v for k, v in item.items()} for item in df.to_dict("records")]
 
 
