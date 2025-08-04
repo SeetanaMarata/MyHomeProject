@@ -275,3 +275,45 @@ pytest --cov=decorators --cov-report=term-missing tests/test_decorators.py
 ```
 pip install pandas openpyxl
 ```
+## Bank Transactions Processor
+
+Проект для обработки и анализа банковских транзакций с расширенными возможностями фильтрации.
+
+###  Новая функциональность
+
+#### 1. Поиск транзакций по описанию (регулярные выражения)
+- Реализована функция `filter_transactions_by_description()`
+- Поиск с учетом регистра или без (case-insensitive)
+- Поддержка специальных символов через `re.escape`
+- Пример использования:
+  ```python
+  from bank_transactions import filter_transactions_by_description
+  
+  result = filter_transactions_by_description(transactions, "перевод")
+  
+#### 2. Подсчет операций по категориям
+Функция count_transactions_by_categories():
+Принимает список категорий и возвращает словарь с количеством операций
+
+
+#### 3.  Расширенные фильтры
+Фильтрация по статусу (filter_transactions_by_status())
+
+Фильтрация по валюте (filter_transactions_by_currency())
+
+Сортировка по дате (sort_transactions_by_date())
+
+
+### Использование
+
+Доступные фильтры в интерфейсе:
+
+Выбор источника данных (JSON/CSV/XLSX)
+
+Фильтр по статусу операции
+
+Поиск по описанию
+
+Фильтр по валюте
+
+Сортировка по дате
